@@ -11,7 +11,7 @@
     <div class="input-container" id="input-container">
       <label for="input">Enter input string</label>
       <input type="text" id="input" placeholder="e.g., 1,2,3 or //;\n1;2" />
-      <button id="calculate" onclick="handleSum()" type="button">
+      <button id="calculate" type="button">
         Calculate
       </button>
     </div>
@@ -19,21 +19,23 @@
 
     <!-- Sum Function -->
     <script type="module" src="index.js"></script>
-
+    
     <!-- Handling the button click and showing the result -->
-    <script>
-      function handleSum() {
+    <script type="module">
+      import { sum } from './index.js';
+
+      document.getElementById("calculate").addEventListener("click", () => {
         const inputValue = document.getElementById("input").value;
-        const result = sum(inputValue);
         const resultEle = document.getElementById("result");
 
         try {
-          const result = sum(input);
-          resultEle.innerHTML = `<p>Sum: ${result}</p>`;
+          const result = sum(inputValue);
+          resultEle.classList.add('result');
+          resultEle.innerHTML = `<p>The sum of the input is = <b>${result}</b></p>`;
         } catch (error) {
-          resultEle.innerHTML = `<p style="color: red;">Error: ${error.message}</p>`;
+          resultEle.innerHTML = `<p style="color: red;">Cannot add negative numbers. <br/> Entered negative numbers are: <br/>${error.message}</p>`;
         }
-      }
+      });
     </script>
   </body>
 </html>
