@@ -1,15 +1,33 @@
 export function sum(input) {
-  let result = 0;
+  let result = 0,
+    numbers;
 
   if (input.trim() == "") {
     return result;
   }
 
-  let numbers = input.replace(/\\n/g, ",").replace(/\n/g, ",").split(",");
+  if (input.startsWith("//")) {
+    numbers = input.replace(/\\n/g, "").split(input[2]).slice(1);
+  } else {
+    numbers = input.replace(/\\n/g, ",").replace(/\n/g, ",").split(",");
+  }
 
   // Calculate the sum of input numbers
   if (numbers) {
-    result = numbers.reduce((acc, num) => acc + parseInt(num), 0);
+    const negativeNumbers = [];
+
+    result = numbers.reduce((acc, num) => {
+      const parsedNum = parseInt(num.trim(), 10);
+      if(parsedNum < 0) {
+        negativeNumbers.push(parsedNum);
+      }
+
+      return acc + parsedNum;
+    }, 0);
+
+    if(negativeNumbers.length > 0) { 
+      throw new Error("negative numbers not allowed: " + negativeNumbers.join(", "));
+    }
   }
 
   return result;

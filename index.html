@@ -33,7 +33,7 @@
           resultEle.classList.add('result');
           resultEle.innerHTML = `<p>The sum of the input is = <b>${result}</b></p>`;
         } catch (error) {
-          resultEle.innerHTML = `<p style="color: red;">Cannot add negative numbers. <br/> Entered negative numbers are: <br/>${error.message}</p>`;
+          resultEle.innerHTML = `<p style="color: red;">${error.message}</p>`;
         }
       });
     </script>
