@@ -1,4 +1,4 @@
-function sum(input) {
+export function sum(input) {
   let result;
   if (input === "") {
     result = 0;
@@ -6,5 +6,3 @@ function sum(input) {
 
   return result;
 };
-
-module.exports = sum;
