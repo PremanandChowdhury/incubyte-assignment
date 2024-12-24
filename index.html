@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>String Calculation</title>
+    <link rel="stylesheet" href="index.css" />
+  </head>
+  <body>
+    <h1 class="title">String Calculator</h1>
+    <div class="input-container" id="input-container">
+      <label for="input">Enter input string</label>
+      <input type="text" id="input" placeholder="e.g., 1,2,3 or //;\n1;2" />
+      <button id="calculate" onclick="handleSum()" type="button">
+        Calculate
+      </button>
+    </div>
+    <div id="result"></div>
+
+    <!-- Sum Function -->
+    <script src="index.js"></script>
+
+    <!-- Handling the button click and showing the result -->
+    <script>
+      function handleSum() {
+        const inputValue = document.getElementById("input").value;
+        const result = sum(inputValue);
+        const resultEle = document.getElementById("result");
+
+        try {
+          const result = sum(input);
+          resultEle.innerHTML = `<p>Sum: ${result}</p>`;
+        } catch (error) {
+          resultEle.innerHTML = `<p style="color: red;">Error: ${error.message}</p>`;
+        }
+      }
+    </script>
+  </body>
+</html>
