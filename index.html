@@ -17,19 +17,18 @@
     </div>
     <div id="result"></div>
 
-    <!-- Sum Function -->
     <script type="module" src="index.js"></script>
     
     <!-- Handling the button click and showing the result -->
     <script type="module">
-      import { sum } from './index.js';
+      import { add } from './index.js';
 
       document.getElementById("calculate").addEventListener("click", () => {
         const inputValue = document.getElementById("input").value;
         const resultEle = document.getElementById("result");
 
         try {
-          const result = sum(inputValue);
+          const result = add(inputValue);
           resultEle.classList.add('result');
           resultEle.innerHTML = `<p>The sum of the input is = <b>${result}</b></p>`;
         } catch (error) {

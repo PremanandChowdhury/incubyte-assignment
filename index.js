@@ -1,4 +1,4 @@
-export function sum(input) {
+export function add(input) {
   let result = 0,
     numbers;
 
@@ -16,17 +16,21 @@ export function sum(input) {
   if (numbers) {
     const negativeNumbers = [];
 
-    result = numbers.reduce((acc, num) => {
-      const parsedNum = parseInt(num.trim(), 10);
-      if(parsedNum < 0) {
-        negativeNumbers.push(parsedNum);
-      }
+    result = numbers
+      .filter((num) => num.trim() !== "")
+      .reduce((acc, num) => {
+        const parsedNum = parseInt(num.trim(), 10);
+        if (parsedNum < 0) {
+          negativeNumbers.push(parsedNum);
+        }
 
-      return acc + parsedNum;
-    }, 0);
+        return acc + parsedNum;
+      }, 0);
 
-    if(negativeNumbers.length > 0) { 
-      throw new Error("negative numbers not allowed: " + negativeNumbers.join(", "));
+    if (negativeNumbers.length > 0) {
+      throw new Error(
+        "negative numbers not allowed: " + negativeNumbers.join(", ")
+      );
     }
   }
 
