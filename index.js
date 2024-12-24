@@ -1,12 +1,11 @@
 export function sum(input) {
-  console.log(input);
   let result = 0;
 
   if (input.trim() == "") {
     return result;
   }
 
-  let numbers = input.replace(/\n/g, ",").split(",");
+  let numbers = input.replace(/\\n/g, ",").replace(/\n/g, ",").split(",");
 
   // Calculate the sum of input numbers
   if (numbers) {
